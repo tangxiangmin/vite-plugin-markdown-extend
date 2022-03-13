@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import md from "../index";
+import md from "../src/index";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,6 +8,6 @@ export default defineConfig({
         vue({
             include: [/\.vue$/, /\.md$/],
         }),
-        md(),
+        md({ mode: "vue" }),
     ],
 });

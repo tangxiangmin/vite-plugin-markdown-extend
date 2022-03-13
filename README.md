@@ -2,7 +2,8 @@ vite-plugin-markdown-extend
 ===
 
 
-直接在markdown的技术文档中展示代码组件
+直接在markdown文档中引用组件模块并渲染展示
+## vue
 
 
 配置插件
@@ -11,13 +12,12 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import md from "../index";
 
-// https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
         vue({
             include: [/\.vue$/, /\.md$/],
         }),
-        md(),
+        md({ mode: "vue" }),
     ],
 });
 ```
@@ -26,9 +26,37 @@ export default defineConfig({
 ```js
 import { createApp } from 'vue'
 
-// import App from './App.vue'
-import readme from './readme.md'
-createApp(readme).mount('#app')
+import ReadMe from './readme.md'
+createApp(ReadMe).mount('#app')
+```
 
+## react
 
+配置
+```js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+import md from "../src/index";
+// https://vitejs.dev/config/
+export default defineConfig({
+    plugins: [
+        react({
+            include: [/\.jsx$/, /\.md$/],
+        }),
+        md({
+            mode: "react",
+            reCodeBlock: /```react((.|\r|\n)*?)```/g, // 可以修改对应的代码块匹配规则
+        }),
+    ],
+});
+```
+
+将md文件作为react文件使用
+```jsx
+import React from "react";
+import ReactDOM from "react-dom";
+import ReadMe from "./readme.md";
+
+ReactDOM.render(<ReadMe />, document.getElementById("root"));
 ```
