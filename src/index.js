@@ -57,14 +57,6 @@ return (<div>${html}</div>)
             importMeta,
             jsx,
         ];
-        // if (id.endsWith(".tsx")) {
-        //     plugins.push([
-        //         require("@babel/plugin-transform-typescript"),
-        //         // @ts-ignore
-        //         { isTSX: true, allowExtensions: true },
-        //     ]);
-        // }
-
         const result = babel.transformSync(template, {
             babelrc: false,
             ast: true,
@@ -91,16 +83,16 @@ return (<div>${html}</div>)
 
         const template = `
 <template>
-${html}
+    ${html}
 </template>
 
 <script>
 ${imports.join("\n")}
 
 export default {
-components: {
-    ${components.join(",")}
-}
+    components: {
+        ${components.join(",")}
+    }
 }
 </script>
 `;

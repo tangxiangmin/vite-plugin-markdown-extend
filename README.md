@@ -2,7 +2,26 @@ vite-plugin-markdown-extend
 ===
 
 
+开发文档:[在markdown中支持可交互组件](https://www.shymean.com/article/在markdown中支持可交互组件)
+
 直接在markdown文档中引用组件模块并渲染展示
+
+````
+# hello
+
+这个是vue md 文件
+
+```vue
+import Button from './components/Button.vue'
+```
+
+````
+
+可以将vue代码块的地方渲染成vue组件，如下图所示
+
+![](http://img.shymean.com/oPic/1646746213781_923.png)
+
+
 ## vue
 
 
